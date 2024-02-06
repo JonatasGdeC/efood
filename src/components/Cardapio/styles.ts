@@ -1,14 +1,21 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
 
-export const Card = styled.div`
+export const Card = styled.li`
   max-width: 472px;
   width: 100%;
   background-color: ${cores.branco};
   border: 1px solid ${cores.rosa};
+  position: relative;
 `
 
 export const Infos = styled.div`
+  position: absolute;
+  top: 16px;
+  right: 16px;
+`
+
+export const Informacoes = styled.div`
   padding: 8px;
   color: ${cores.rosa};
 `

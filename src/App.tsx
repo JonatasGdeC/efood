@@ -1,16 +1,14 @@
+import { BrowserRouter } from 'react-router-dom'
+import Rotas from './routes'
 import { EstiloGlobal } from './styles'
-
-import Header from './components/Header'
-import ListaCardapios from './components/ListaCardapios'
 
 function App() {
   return (
     <>
-      <EstiloGlobal />
-      <Header />
-      <div className="container">
-        <ListaCardapios />
-      </div>
+      <BrowserRouter>
+        <EstiloGlobal />
+        <Rotas />
+      </BrowserRouter>
     </>
   )
 }

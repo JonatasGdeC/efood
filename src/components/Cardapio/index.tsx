@@ -1,27 +1,41 @@
-import Estrela from '../../assets/images/estrela.png'
+import Tag from '../Tag'
 
+import Estrela from '../../assets/images/estrela.png'
 import * as S from './styles'
 
-const Cardapio = () => {
+type Props = {
+  infos: string[]
+  imagem: string
+  title: string
+  nota: string
+  description: string
+  to: string
+}
+
+const Cardapio = ({ infos, imagem, title, nota, description, to }: Props) => {
   return (
     <S.Card>
-      <img src="https://via.placeholder.com/472x216" alt="" />
+      <img src={imagem} alt={title} />
       <S.Infos>
+        {infos.map((infos) => (
+          <Tag type="info" key={infos}>
+            {infos}
+          </Tag>
+        ))}
+      </S.Infos>
+      <S.Informacoes>
         <S.Title>
-          <h3>Nome do produto</h3>
+          <h3>{title}</h3>
           <div>
-            <p>4.9</p>
+            <p>{nota}</p>
             <img src={Estrela} alt="Estrela" />
           </div>
         </S.Title>
-        <S.Description>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor
-          veritatis commodi sunt recusandae cum velit sit quaerat iste
-          accusantium necessitatibus! Quidem quos accusamus optio neque itaque
-          alias minima, sapiente numquam?
-        </S.Description>
-        <a href="#">Saiba mais</a>
-      </S.Infos>
+        <S.Description>{description}</S.Description>
+        <Tag type="link" to={to}>
+          Saiba mais
+        </Tag>
+      </S.Informacoes>
     </S.Card>
   )
 }
