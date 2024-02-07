@@ -6,4 +6,11 @@ export const Lista = styled.ul`
   row-gap: 48px;
   margin-top: 40px;
   margin-bottom: 80px;
+
+  @media (max-width: 1024px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px 10px 80px;
+  }
 `

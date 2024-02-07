@@ -7,6 +7,12 @@ export const Card = styled.li`
   background-color: ${cores.branco};
   border: 1px solid ${cores.rosa};
   position: relative;
+  transition: all ease 0.3s;
+
+  &:hover {
+    box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
+    scale: 1.03;
+  }
 `
 
 export const Infos = styled.div`

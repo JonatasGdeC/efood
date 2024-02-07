@@ -5,6 +5,12 @@ export const Card = styled.div`
   padding: 8px;
   background-color: ${cores.rosa};
   color: ${cores.branco};
+  transition: all ease 0.3s;
+
+  &:hover {
+    box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
+    scale: 1.03;
+  }
 `
 
 export const Title = styled.h3`
@@ -28,4 +34,9 @@ export const Buttom = styled.button`
   font-weight: bold;
   padding: 4px;
   cursor: pointer;
+  transition: all ease 0.3s;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `

@@ -18,4 +18,9 @@ export const LinkCardapio = styled(Link)`
   font-size: 14px;
   font-weight: bold;
   padding: 6px 4px;
+  transition: all ease 0.3s;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `
