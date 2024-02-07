@@ -16,7 +16,7 @@ export const Infos = styled.div`
 `
 
 export const Informacoes = styled.div`
-  padding: 8px;
+  padding: 8px 8px 12px 8px;
   color: ${cores.rosa};
 `
 export const Title = styled.div`

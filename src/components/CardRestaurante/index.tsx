@@ -12,7 +12,14 @@ type Props = {
   to: string
 }
 
-const Cardapio = ({ infos, imagem, title, nota, description, to }: Props) => {
+const CardRestaurante = ({
+  infos,
+  imagem,
+  title,
+  nota,
+  description,
+  to
+}: Props) => {
   return (
     <S.Card>
       <img src={imagem} alt={title} />
@@ -40,4 +47,4 @@ const Cardapio = ({ infos, imagem, title, nota, description, to }: Props) => {
   )
 }
 
-export default Cardapio
+export default CardRestaurante

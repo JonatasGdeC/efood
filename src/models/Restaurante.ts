@@ -1,4 +1,4 @@
-class Cardapios {
+class Restaurante {
   infos: string[]
   imagem: string
   title: string
@@ -26,4 +26,4 @@ class Cardapios {
   }
 }
 
-export default Cardapios
+export default Restaurante
