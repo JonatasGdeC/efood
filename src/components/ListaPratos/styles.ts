@@ -2,9 +2,8 @@ import styled from 'styled-components'
 
 export const Lista = styled.ul`
   display: grid;
+  gap: 32px;
   grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 32px;
-  row-gap: 32px;
   margin-top: 56px;
   margin-bottom: 120px;
 
@@ -14,7 +13,7 @@ export const Lista = styled.ul`
 
   @media (max-width: 796px) {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
   }
 `

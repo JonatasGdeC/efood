@@ -14,25 +14,25 @@ export const Card = styled.div`
 `
 
 export const Title = styled.h3`
-  font-weight: bold;
-  font-size: 16px;
   margin-top: 8px;
+  font-size: 16px;
+  font-weight: bold;
 `
 
 export const Description = styled.p`
+  margin: 8px 0;
   font-size: 14px;
   line-height: 22px;
-  margin: 8px 0;
 `
 
 export const Buttom = styled.button`
   width: 100%;
-  border: none;
+  padding: 4px;
   background-color: ${cores.branco};
+  border: none;
   color: ${cores.rosa};
   font-size: 14px;
   font-weight: bold;
-  padding: 4px;
   cursor: pointer;
   transition: all ease 0.3s;
 

@@ -40,7 +40,7 @@ const Header = ({
           <Link to={'/'}>
             <img src={logo} alt="efood" />
           </Link>
-          <p>0 produto(s) no carrinho</p>
+          <h3>0 produto(s) no carrinho</h3>
         </div>
         <div style={{ backgroundImage: `url(${imgRestaurante})` }}>
           <div className="container">

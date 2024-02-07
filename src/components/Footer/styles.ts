@@ -2,12 +2,16 @@ import styled from 'styled-components'
 import { cores } from '../../styles'
 
 export const Footer = styled.footer`
+  padding: 40px 0;
   background-color: ${cores.branco};
   color: ${cores.rosa};
-  padding: 40px 0;
 
   .container {
     text-align: center;
+
+    p {
+      font-size: 10px;
+    }
   }
 `
 

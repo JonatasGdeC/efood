@@ -32,7 +32,7 @@ const CardRestaurante = ({
       </S.Infos>
       <S.Informacoes>
         <S.Title>
-          <h3>{title}</h3>
+          <p>{title}</p>
           <div>
             <p>{nota}</p>
             <img src={Estrela} alt="Estrela" />

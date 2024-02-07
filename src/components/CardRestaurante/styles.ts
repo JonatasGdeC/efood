@@ -2,16 +2,19 @@ import styled from 'styled-components'
 import { cores } from '../../styles'
 
 export const Card = styled.li`
+  position: relative;
   max-width: 472px;
   width: 100%;
-  background-color: ${cores.branco};
   border: 1px solid ${cores.rosa};
-  position: relative;
   transition: all ease 0.3s;
 
+  & > img {
+    width: 100%;
+  }
+
   &:hover {
-    box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
     scale: 1.03;
+    box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
   }
 `
 
@@ -29,9 +32,9 @@ export const Title = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 16px;
   font-size: 18px;
   font-weight: bold;
-  margin-bottom: 16px;
 
   div {
     display: flex;
@@ -40,7 +43,7 @@ export const Title = styled.div`
   }
 `
 export const Description = styled.p`
+  margin-bottom: 16px;
   font-size: 14px;
   line-height: 22px;
-  margin-bottom: 16px;
 `
