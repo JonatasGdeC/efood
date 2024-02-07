@@ -12,7 +12,7 @@ const ListaRestaurante = ({ restaurantes }: Props) => {
       <Lista>
         {restaurantes.map((restaurante) => (
           <Restaurante
-            key={restaurante.id}
+            key={restaurante.toString()}
             infos={restaurante.infos}
             imagem={restaurante.imagem}
             title={restaurante.title}

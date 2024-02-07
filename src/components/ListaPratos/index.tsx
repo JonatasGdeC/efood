@@ -11,7 +11,7 @@ const ListaPratos = ({ pratos }: Props) => {
     <Lista>
       {pratos.map((prato) => (
         <CardPrato
-          key={prato.id}
+          key={prato.toString()}
           imgPrato={prato.imgPrato}
           title={prato.title}
           description={prato.description}
