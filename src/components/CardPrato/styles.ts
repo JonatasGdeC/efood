@@ -25,18 +25,66 @@ export const Description = styled.p`
   line-height: 22px;
 `
 
-export const Buttom = styled.button`
+export const Modal = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  padding: 4px;
-  background-color: ${cores.branco};
-  border: none;
-  color: ${cores.rosa};
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all ease 0.3s;
+  height: 100%;
+  display: none;
+  z-index: 1;
+  align-items: center;
+  justify-content: center;
 
-  &:hover {
-    opacity: 0.8;
+  &.visivel {
+    display: flex;
+  }
+
+  .overlay {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+`
+
+export const HeaderModal = styled.header`
+  text-align: right;
+  background-color: ${cores.rosa};
+  img {
+    margin: 8px;
+    cursor: pointer;
+  }
+`
+
+export const BodyModal = styled.div`
+  z-index: 1;
+  background-color: ${cores.rosa};
+  display: flex;
+  gap: 24px;
+  padding: 0 32px 32px;
+  color: ${cores.branco};
+
+  img {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+  }
+`
+
+export const InfosModal = styled.div`
+  h4 {
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  p {
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 22px;
   }
 `

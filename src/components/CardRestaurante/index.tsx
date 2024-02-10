@@ -1,4 +1,5 @@
 import Tag from '../Tag'
+import Button from '../Button'
 
 import Estrela from '../../assets/images/estrela.png'
 import * as S from './styles'
@@ -17,17 +18,14 @@ const CardRestaurante = ({
   imagem,
   title,
   nota,
-  description,
-  to
+  description
 }: Props) => {
   return (
     <S.Card>
       <img src={imagem} alt={title} />
       <S.Infos>
         {infos.map((infos) => (
-          <Tag type="info" key={infos}>
-            {infos}
-          </Tag>
+          <Tag key={infos}>{infos}</Tag>
         ))}
       </S.Infos>
       <S.Informacoes>
@@ -39,9 +37,9 @@ const CardRestaurante = ({
           </div>
         </S.Title>
         <S.Description>{description}</S.Description>
-        <Tag type="link" to={to}>
+        <Button to="/cardapio" type="link">
           Saiba mais
-        </Tag>
+        </Button>
       </S.Informacoes>
     </S.Card>
   )
