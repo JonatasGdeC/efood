@@ -1,6 +1,5 @@
 import Button from '../Button'
 import btnClose from '../../assets/images/close.png'
-import imgPizza from '../../assets/images/prato-pizza.png'
 
 import * as S from './styles'
 import { useState } from 'react'
@@ -10,13 +9,15 @@ type Props = {
   imgPrato: string
   title: string
   description: string
+  portion: string
+  price: number
 }
 
 interface ModalState {
   isVisible: boolean
 }
 
-const CardPrato = ({ imgPrato, title, description }: Props) => {
+const CardPrato = ({ imgPrato, title, description, portion, price }: Props) => {
   const [modal, setModal] = useState<ModalState>({
     isVisible: false
   })
@@ -25,12 +26,26 @@ const CardPrato = ({ imgPrato, title, description }: Props) => {
     setModal({ isVisible: false })
   }
 
+  const getDescricao = (descricao: string) => {
+    if (descricao.length > 150) {
+      return descricao.slice(0, 147) + '...'
+    }
+    return descricao
+  }
+
+  const formataPreco = (preco = 0) => {
+    return new Intl.NumberFormat('pt-br', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(preco)
+  }
+
   return (
     <>
       <S.Card>
         <img src={imgPrato} alt={title} />
         <S.Title>{title}</S.Title>
-        <S.Description>{description}</S.Description>
+        <S.Description>{getDescricao(description)}</S.Description>
         <Button width="all" type="button">
           <p
             onClick={() => {
@@ -47,25 +62,12 @@ const CardPrato = ({ imgPrato, title, description }: Props) => {
             <img src={btnClose} alt="Fechar" onClick={() => closeModal()} />
           </S.HeaderModal>
           <S.BodyModal>
-            <img src={imgPizza} alt="Imagem do prato" />
+            <img src={imgPrato} alt="Imagem do prato" />
             <S.InfosModal>
-              <h4>Pizza Marguerita</h4>
-              <p>
-                A pizza Margherita é uma pizza clássica da culinária italiana,
-                reconhecida por sua simplicidade e sabor inigualável. Ela é
-                feita com uma base de massa fina e crocante, coberta com molho
-                de tomate fresco, queijo mussarela de alta qualidade, manjericão
-                fresco e azeite de oliva extra-virgem. A combinação de sabores é
-                perfeita, com o molho de tomate suculento e ligeiramente ácido,
-                o queijo derretido e cremoso e as folhas de manjericão frescas,
-                que adicionam um toque de sabor herbáceo. É uma pizza simples,
-                mas deliciosa, que agrada a todos os paladares e é uma ótima
-                opção para qualquer ocasião.
-              </p>
-              <p>
-                Serve: <span>de 2 a 3 pessoas</span>
-              </p>
-              <Button type="button">Adicionar ao carrinho - R$ 60,90</Button>
+              <h4>{title}</h4>
+              <p>{description}</p>
+              <p>Serve: {portion}</p>
+              <Button type="button">{`Adicionar ao carrinho - ${formataPreco(price)}`}</Button>
             </S.InfosModal>
           </S.BodyModal>
         </div>

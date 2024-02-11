@@ -16,6 +16,8 @@ const ListaPratos = ({ pratos }: Props) => {
           title={prato.nome}
           description={prato.descricao}
           imgPrato={prato.foto}
+          portion={prato.porcao}
+          price={prato.preco}
         />
       ))}
     </Lista>
