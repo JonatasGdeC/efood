@@ -28,21 +28,3 @@ export const Header = styled.header<Props>`
     font-size: 18px;
   }
 `
-export const Banner = styled.div`
-  width: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  .container {
-    padding: 24px 0 32px;
-    font-size: 32px;
-    font-weight: 100;
-    color: #fff;
-
-    h2 {
-      margin-top: 156px;
-      font-size: 32px;
-      font-weight: bold;
-    }
-  }
-`

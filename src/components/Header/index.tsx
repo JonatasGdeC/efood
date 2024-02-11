@@ -3,8 +3,6 @@ import imgHeader from '../../assets/images/fundo.png'
 import logo from '../../assets/images/logo.png'
 import { Link } from 'react-router-dom'
 
-import imgBannerRestaurante from '../../assets/images/fundo-cardapio-italiano.png'
-
 export type Props = {
   type: 'home' | 'cardapio'
   nameRestaurante?: string
@@ -49,12 +47,6 @@ const Header = ({
           </div>
         </div>
       </S.Header>
-      <S.Banner style={{ backgroundImage: `url(${imgBannerRestaurante})` }}>
-        <div className="container">
-          <p>Italiana</p>
-          <h2>La Dolce Vita Trattoria</h2>
-        </div>
-      </S.Banner>
     </>
   )
 }

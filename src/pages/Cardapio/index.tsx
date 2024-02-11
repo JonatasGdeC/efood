@@ -21,9 +21,7 @@ const Cardapio = () => {
   return (
     <>
       <Header type="cardapio" />
-      <div className="container">
-        <ListaPratos pratos={cardapio} />
-      </div>
+      <ListaPratos pratos={cardapio} />
     </>
   )
 }
