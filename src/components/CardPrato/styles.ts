@@ -32,25 +32,25 @@ export const Description = styled.p`
 `
 
 export const Modal = styled.div`
+  display: none;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: none;
   z-index: 1;
-  align-items: center;
-  justify-content: center;
 
   &.visivel {
     display: flex;
   }
 
   .overlay {
-    z-index: -1;
     position: absolute;
     top: 0;
     left: 0;
+    z-index: -1;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
@@ -67,11 +67,11 @@ export const HeaderModal = styled.header`
 `
 
 export const BodyModal = styled.div`
-  z-index: 1;
-  background-color: ${cores.rosa};
   display: flex;
   gap: 24px;
+  z-index: 1;
   padding: 0 32px 32px;
+  background-color: ${cores.rosa};
   color: ${cores.branco};
 
   img {
