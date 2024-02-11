@@ -5,12 +5,12 @@ import Estrela from '../../assets/images/estrela.png'
 import * as S from './styles'
 
 type Props = {
-  infos: string[]
+  infos: string
   imagem: string
   title: string
-  nota: string
+  nota: number
   description: string
-  to: string
+  to?: string
 }
 
 const CardRestaurante = ({
@@ -24,9 +24,7 @@ const CardRestaurante = ({
     <S.Card>
       <img src={imagem} alt={title} />
       <S.Infos>
-        {infos.map((infos) => (
-          <Tag key={infos}>{infos}</Tag>
-        ))}
+        <Tag>{infos}</Tag>
       </S.Infos>
       <S.Informacoes>
         <S.Title>

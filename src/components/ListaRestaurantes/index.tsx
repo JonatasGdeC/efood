@@ -1,9 +1,10 @@
-import Restaurantes from '../../models/Restaurante'
-import Restaurante from '../CardRestaurante'
+import { Restaurante } from '../../pages/Home'
+
 import { Lista } from './styles'
+import CardRestaurante from '../CardRestaurante'
 
 export type Props = {
-  restaurantes: Restaurantes[]
+  restaurantes: Restaurante[]
 }
 
 const ListaRestaurante = ({ restaurantes }: Props) => {
@@ -11,14 +12,13 @@ const ListaRestaurante = ({ restaurantes }: Props) => {
     <nav>
       <Lista>
         {restaurantes.map((restaurante) => (
-          <Restaurante
+          <CardRestaurante
             key={restaurante.toString()}
-            infos={restaurante.infos}
-            imagem={restaurante.imagem}
-            title={restaurante.title}
-            nota={restaurante.nota}
-            description={restaurante.description}
-            to={restaurante.to}
+            infos={restaurante.tipo}
+            imagem={restaurante.capa}
+            title={restaurante.titulo}
+            nota={restaurante.avaliacao}
+            description={restaurante.descricao}
           />
         ))}
       </Lista>
