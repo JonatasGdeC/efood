@@ -5,6 +5,8 @@ import Estrela from '../../assets/images/estrela.png'
 import * as S from './styles'
 
 type Props = {
+  id: number
+  destaque: boolean
   infos: string
   imagem: string
   title: string
@@ -14,16 +16,25 @@ type Props = {
 }
 
 const CardRestaurante = ({
+  id,
+  destaque,
   infos,
   imagem,
   title,
   nota,
   description
 }: Props) => {
+  const getDescricao = (descricao: string) => {
+    if (descricao.length > 250) {
+      return descricao.slice(0, 247) + '...'
+    }
+    return descricao
+  }
   return (
     <S.Card>
       <img src={imagem} alt={title} />
       <S.Infos>
+        {destaque === true && <Tag>Destaque da semana</Tag>}
         <Tag>{infos}</Tag>
       </S.Infos>
       <S.Informacoes>
@@ -34,8 +45,8 @@ const CardRestaurante = ({
             <img src={Estrela} alt="Estrela" />
           </div>
         </S.Title>
-        <S.Description>{description}</S.Description>
-        <Button to="/cardapio" type="link">
+        <S.Description>{getDescricao(description)}</S.Description>
+        <Button to={`/cardapio/${id}`} type="link">
           Saiba mais
         </Button>
       </S.Informacoes>

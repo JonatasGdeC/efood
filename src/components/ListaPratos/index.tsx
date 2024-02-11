@@ -1,20 +1,21 @@
 import { Lista } from './styles'
 import CardPrato from '../CardPrato'
-import Pratos from '../../models/Pratos'
+import { Restaurante } from '../../pages/Home'
 
 export type Props = {
-  pratos: Pratos[]
+  pratos: Restaurante
 }
 
 const ListaPratos = ({ pratos }: Props) => {
   return (
     <Lista>
-      {pratos.map((prato) => (
+      {pratos.cardapio.map((prato) => (
         <CardPrato
           key={prato.toString()}
-          imgPrato={prato.imgPrato}
-          title={prato.title}
-          description={prato.description}
+          id={prato.id}
+          title={prato.nome}
+          description={prato.descricao}
+          imgPrato={prato.foto}
         />
       ))}
     </Lista>

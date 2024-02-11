@@ -14,6 +14,8 @@ const ListaRestaurante = ({ restaurantes }: Props) => {
         {restaurantes.map((restaurante) => (
           <CardRestaurante
             key={restaurante.toString()}
+            id={restaurante.id}
+            destaque={restaurante.destacado}
             infos={restaurante.tipo}
             imagem={restaurante.capa}
             title={restaurante.titulo}

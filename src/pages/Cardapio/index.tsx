@@ -1,60 +1,28 @@
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import Header from '../../components/Header'
 import ListaPratos from '../../components/ListaPratos'
-import Pratos from '../../models/Pratos'
-
-import imgPratoItaliano from '../../assets/images/prato-pizza.png'
-
-const pratos: Pratos[] = [
-  {
-    id: 1,
-    imgPrato: imgPratoItaliano,
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 2,
-    imgPrato: imgPratoItaliano,
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 3,
-    imgPrato: imgPratoItaliano,
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 4,
-    imgPrato: imgPratoItaliano,
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 5,
-    imgPrato: imgPratoItaliano,
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 6,
-    imgPrato: imgPratoItaliano,
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  }
-]
+import { Restaurante } from '../Home'
 
 const Cardapio = () => {
+  const { id } = useParams()
+  const [cardapio, setCardapio] = useState<Restaurante>()
+
+  useEffect(() => {
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+      .then((res) => res.json())
+      .then((res) => setCardapio(res))
+  }, [id])
+
+  if (!cardapio) {
+    return <h4>Carregando...</h4>
+  }
+
   return (
     <>
       <Header type="cardapio" />
       <div className="container">
-        <ListaPratos pratos={pratos} />
+        <ListaPratos pratos={cardapio} />
       </div>
     </>
   )

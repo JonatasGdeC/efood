@@ -6,6 +6,7 @@ import * as S from './styles'
 import { useState } from 'react'
 
 type Props = {
+  id: number
   imgPrato: string
   title: string
   description: string
