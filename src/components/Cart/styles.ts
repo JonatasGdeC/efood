@@ -7,6 +7,11 @@ export const CartContainer = styled.div`
   height: 100%;
   top: 0;
   z-index: 1;
+  display: none;
+
+  &.is--open {
+    display: block;
+  }
 `
 
 export const Overlay = styled.div`
