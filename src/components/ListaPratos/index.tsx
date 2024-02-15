@@ -4,11 +4,12 @@ import { Restaurante } from '../../pages/Home'
 
 export type Props = {
   pratos: Restaurante
+  id?: string
 }
 
-const ListaPratos = ({ pratos }: Props) => {
+const ListaPratos = ({ pratos, id }: Props) => {
   return (
-    <>
+    <div id={id}>
       <S.Banner style={{ backgroundImage: `url(${pratos.capa})` }}>
         <div className="container">
           <p>{pratos.tipo}</p>
@@ -30,7 +31,7 @@ const ListaPratos = ({ pratos }: Props) => {
           ))}
         </S.Lista>
       </div>
-    </>
+    </div>
   )
 }
 

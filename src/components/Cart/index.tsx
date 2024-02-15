@@ -1,25 +1,41 @@
+import { useDispatch, useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
+
+import { close } from '../../store/reducers/cart'
+
 import Button from '../Button'
 import * as S from './styles'
-
-import imgTeste from '../../assets/images/prato-pizza.png'
 import imgExcluir from '../../assets/images/lixeira.svg'
 
 const Cart = () => {
+  const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
+  const dispatch = useDispatch()
+
+  const closeCart = () => {
+    dispatch(close())
+  }
+
   return (
-    <S.CartContainer>
-      <S.Overlay />
+    <S.CartContainer className={isOpen ? 'is--open' : ''}>
+      <S.Overlay onClick={closeCart} />
       <S.Cart>
         <S.Lista>
-          <S.Item>
-            <img src={imgTeste} alt="" />
-            <div>
-              <h4>Nome do produto</h4>
-              <p>R$ 60,90</p>
-            </div>
-            <button title="Clique aqui para excluir este produto">
-              <img src={imgExcluir} alt="Excluir" />
-            </button>
-          </S.Item>
+          {items.map((restaurante) => (
+            <li key={restaurante.id}>
+              {restaurante.cardapio.map((prato) => (
+                <S.Item key={prato.id}>
+                  <img src={prato.foto} alt={prato.nome} />
+                  <div>
+                    <h4>{prato.nome}</h4>
+                    <p>{prato.preco}</p>
+                  </div>
+                  <button title="Clique aqui para excluir este produto">
+                    <img src={imgExcluir} alt="Excluir" />
+                  </button>
+                </S.Item>
+              ))}
+            </li>
+          ))}
         </S.Lista>
         <S.Total>
           <p>Valor total</p>

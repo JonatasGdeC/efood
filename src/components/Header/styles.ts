@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { cores } from '../../styles'
 
 import { Props } from '.'
+import { Link } from 'react-router-dom'
 
 export const Header = styled.header<Props>`
   width: 100%;
@@ -24,7 +25,18 @@ export const Header = styled.header<Props>`
     font-size: 36px;
   }
 
-  h3 {
+  button {
+    background-color: transparent;
+    border: none;
     font-size: 18px;
+    font-weight: bold;
+    color: ${cores.rosa};
+    cursor: pointer;
   }
+`
+
+export const LinkHome = styled(Link)`
+  font-size: 18px;
+  font-weight: bold;
+  color: ${cores.rosa};
 `

@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Restaurante } from '../../pages/Home'
 
 type CartState = {
@@ -20,9 +20,12 @@ const cartSlice = createSlice({
     },
     close: (state) => {
       state.isOpen = false
+    },
+    add: (state, action: PayloadAction<Restaurante>) => {
+      state.items.push(action.payload)
     }
   }
 })
 
-export const { open, close } = cartSlice.actions
+export const { open, close, add } = cartSlice.actions
 export default cartSlice.reducer

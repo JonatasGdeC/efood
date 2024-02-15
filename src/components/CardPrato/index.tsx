@@ -3,8 +3,12 @@ import btnClose from '../../assets/images/close.png'
 
 import * as S from './styles'
 import { useState } from 'react'
+import { Restaurante } from '../../pages/Home'
+import { useDispatch } from 'react-redux'
+import { add, open } from '../../store/reducers/cart'
 
 type Props = {
+  prato?: Restaurante
   id: number
   imgPrato: string
   title: string
@@ -17,7 +21,20 @@ interface ModalState {
   isVisible: boolean
 }
 
-const CardPrato = ({ imgPrato, title, description, portion, price }: Props) => {
+const CardPrato = ({
+  prato,
+  imgPrato,
+  title,
+  description,
+  portion,
+  price
+}: Props) => {
+  const dispatch = useDispatch()
+  const addPrato = () => {
+    dispatch(add(prato!))
+    dispatch(open())
+  }
+
   const [modal, setModal] = useState<ModalState>({
     isVisible: false
   })
@@ -67,7 +84,11 @@ const CardPrato = ({ imgPrato, title, description, portion, price }: Props) => {
               <h4>{title}</h4>
               <p>{description}</p>
               <p>Serve: {portion}</p>
-              <Button type="button">{`Adicionar ao carrinho - ${formataPreco(price)}`}</Button>
+              <Button type="button">
+                <span
+                  onClick={addPrato}
+                >{`Adicionar ao carrinho - ${formataPreco(price)}`}</span>
+              </Button>
             </S.InfosModal>
           </S.BodyModal>
         </div>

@@ -1,7 +1,6 @@
-import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 
-// import { RootReducer } from '../../store'
+import { RootReducer } from '../../store'
 import { open } from '../../store/reducers/cart'
 
 import * as S from './styles'
@@ -22,7 +21,7 @@ const Header = ({
   categoryRestaurante
 }: Props) => {
   const dispatch = useDispatch()
-  // const { items } = useSelector((state: RootReducer) => state.cart)
+  const { items } = useSelector((state: RootReducer) => state.cart)
 
   const openCart = () => {
     dispatch(open())
@@ -46,11 +45,11 @@ const Header = ({
         style={{ backgroundImage: `url(${imgHeader})` }}
       >
         <div className="container">
-          <h3>Restaurantes</h3>
-          <Link to={'/'}>
-            <img src={logo} alt="efood" />
-          </Link>
-          <h3 onClick={openCart}>0 produto(s) no carrinho</h3>
+          <S.LinkHome to={'/'}>Restaurantes</S.LinkHome>
+          <img src={logo} alt="efood" />
+          <button onClick={openCart}>
+            {items.length} produto(s) no carrinho
+          </button>
         </div>
         <div style={{ backgroundImage: `url(${imgRestaurante})` }}>
           <div className="container">
