@@ -4,6 +4,15 @@ import ListaPratos from '../../components/ListaPratos'
 
 import { useGetPratosQuery } from '../../services/api'
 
+export type Cardapio = {
+  foto: string
+  preco: number
+  id: number
+  nome: string
+  descricao: string
+  porcao: string
+}
+
 const Cardapio = () => {
   const { id } = useParams()
   const { data: cardapio } = useGetPratosQuery(id!)

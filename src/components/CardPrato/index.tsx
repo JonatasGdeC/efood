@@ -3,12 +3,12 @@ import btnClose from '../../assets/images/close.png'
 
 import * as S from './styles'
 import { useState } from 'react'
-import { Restaurante } from '../../pages/Home'
+import { Cardapio } from '../../pages/Cardapio'
 import { useDispatch } from 'react-redux'
 import { add, open } from '../../store/reducers/cart'
 
 type Props = {
-  prato?: Restaurante
+  prato?: Cardapio
   id: number
   imgPrato: string
   title: string

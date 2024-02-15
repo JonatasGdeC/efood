@@ -20,21 +20,17 @@ const Cart = () => {
       <S.Overlay onClick={closeCart} />
       <S.Cart>
         <S.Lista>
-          {items.map((restaurante) => (
-            <li key={restaurante.id}>
-              {restaurante.cardapio.map((prato) => (
-                <S.Item key={prato.id}>
-                  <img src={prato.foto} alt={prato.nome} />
-                  <div>
-                    <h4>{prato.nome}</h4>
-                    <p>{prato.preco}</p>
-                  </div>
-                  <button title="Clique aqui para excluir este produto">
-                    <img src={imgExcluir} alt="Excluir" />
-                  </button>
-                </S.Item>
-              ))}
-            </li>
+          {items.map((prato) => (
+            <S.Item key={prato.toString()}>
+              <img src={prato.foto} alt={prato.nome} />
+              <div>
+                <h4>{prato.nome}</h4>
+                <p>{prato.preco}</p>
+              </div>
+              <button title="Clique aqui para excluir este produto">
+                <img src={imgExcluir} alt="Excluir" />
+              </button>
+            </S.Item>
           ))}
         </S.Lista>
         <S.Total>
