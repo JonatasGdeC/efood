@@ -20,7 +20,8 @@ const ListaPratos = ({ pratos, id }: Props) => {
         <S.Lista>
           {pratos.cardapio.map((prato) => (
             <CardPrato
-              key={prato.toString()}
+              prato={prato}
+              key={prato.nome}
               id={prato.id}
               title={prato.nome}
               description={prato.descricao}

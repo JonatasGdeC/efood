@@ -24,7 +24,7 @@ export const Overlay = styled.div`
   opacity: 0.8;
 `
 
-export const Cart = styled.div`
+export const Cart = styled.aside`
   position: absolute;
   top: 0;
   right: 0;

@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux'
 import { add, open } from '../../store/reducers/cart'
 
 type Props = {
-  prato?: Cardapio
+  prato: Cardapio
   id: number
   imgPrato: string
   title: string
@@ -19,6 +19,13 @@ type Props = {
 
 interface ModalState {
   isVisible: boolean
+}
+
+export const formataPreco = (preco = 0) => {
+  return new Intl.NumberFormat('pt-br', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(preco)
 }
 
 const CardPrato = ({
@@ -48,13 +55,6 @@ const CardPrato = ({
       return descricao.slice(0, 147) + '...'
     }
     return descricao
-  }
-
-  const formataPreco = (preco = 0) => {
-    return new Intl.NumberFormat('pt-br', {
-      style: 'currency',
-      currency: 'BRL'
-    }).format(preco)
   }
 
   return (
