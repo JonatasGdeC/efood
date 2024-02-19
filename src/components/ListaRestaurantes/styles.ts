@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { breakpoints } from '../../styles'
 
 export const Lista = styled.ul`
   display: grid;
@@ -8,7 +9,7 @@ export const Lista = styled.ul`
   margin-top: 80px;
   margin-bottom: 120px;
 
-  @media (max-width: 1024px) {
+  @media (max-width: ${breakpoints.desktop}) {
     display: flex;
     align-items: center;
     flex-direction: column;

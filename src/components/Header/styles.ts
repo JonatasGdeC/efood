@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 import { Props } from '.'
 import { Link } from 'react-router-dom'
@@ -18,6 +18,14 @@ export const Header = styled.header<Props>`
     justify-content: space-between;
     max-width: ${(props) => (props.type === 'home' ? '560px' : '1024px')};
     text-align: center;
+
+    @media (max-width: ${breakpoints.desktop}) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+      max-width: 100%;
+    }
   }
 
   h2 {

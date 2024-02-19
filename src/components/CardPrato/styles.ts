@@ -1,8 +1,9 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const Card = styled.div`
   padding: 8px;
+  max-width: 320px;
   background-color: ${cores.rosa};
   color: ${cores.branco};
   transition: all ease 0.3s;
@@ -78,6 +79,14 @@ export const BodyModal = styled.div`
     width: 280px;
     height: 280px;
     object-fit: cover;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex-direction: column;
+
+    img {
+      width: 100%;
+    }
   }
 `
 
