@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { cores } from '../../styles'
 
 export const Banner = styled.div`
   position: relative;
@@ -26,7 +27,7 @@ export const Banner = styled.div`
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: #000;
+    background-color: ${cores.preto};
     opacity: 0.5;
     content: '';
   }
