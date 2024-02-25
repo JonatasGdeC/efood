@@ -5,9 +5,10 @@ export type Props = {
   width?: 'all'
   to?: string
   children: string | JSX.Element
+  onClick?: () => void
 }
 
-const Button = ({ type, width, to, children }: Props) => {
+const Button = ({ type, width, to, children, onClick }: Props) => {
   if (type === 'link') {
     return (
       <S.ButtonLink to={to as string} type="link">
@@ -17,7 +18,7 @@ const Button = ({ type, width, to, children }: Props) => {
   }
 
   return (
-    <S.Button width={width} type="button">
+    <S.Button width={width} type="button" onClick={onClick}>
       {children}
     </S.Button>
   )

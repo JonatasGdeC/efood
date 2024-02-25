@@ -90,3 +90,11 @@ export const Total = styled.div`
   font-weight: bold;
   color: ${cores.branco};
 `
+
+export const Buttons = styled.div`
+  margin-top: 24px;
+
+  button {
+    margin-bottom: 8px;
+  }
+`
