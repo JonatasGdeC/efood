@@ -151,3 +151,20 @@ export const Input = styled.div`
     }
   }
 `
+
+export const Mensage = styled.div`
+  color: ${cores.branco};
+
+  h3 {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 0;
+    margin-bottom: 16px;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 24px;
+  }
+`

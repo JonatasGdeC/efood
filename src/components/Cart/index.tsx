@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import { IMaskInput } from 'react-imask'
 
-import { close, remove } from '../../store/reducers/cart'
+import { clear, close, remove } from '../../store/reducers/cart'
 import { formataPreco } from '../CardPrato'
 import { usePurchaseMutation } from '../../services/api'
 
@@ -17,7 +18,7 @@ const Cart = () => {
   const dispatch = useDispatch()
   const [entrega, setEntrega] = useState(false)
   const [pagamento, setPagamento] = useState(false)
-  const [purchase] = usePurchaseMutation()
+  const [purchase, { data, isSuccess }] = usePurchaseMutation()
 
   const closeCart = () => {
     dispatch(close())
@@ -49,10 +50,10 @@ const Cart = () => {
     },
     validationSchema: Yup.object({
       receiptName: Yup.string().min(5).required(),
-      address: Yup.string().min(5).max(50).required(),
-      city: Yup.string().min(3).max(50).required(),
+      address: Yup.string().min(5).required(),
+      city: Yup.string().min(3).required(),
       addressCode: Yup.string().min(9).required(),
-      addressNumber: Yup.string().min(1).max(10).required(),
+      addressNumber: Yup.string().required(),
       addressComplement: Yup.string().max(20),
       cardName: Yup.string().min(3).max(30).required(),
       cardNumber: Yup.string().min(19).required(),
@@ -114,6 +115,20 @@ const Cart = () => {
       setPagamento(false)
     } else {
       setPagamento(true)
+    }
+  }
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(clear())
+    }
+  }, [isSuccess, dispatch])
+
+  const concluir = () => {
+    if (isSuccess) {
+      setEntrega(false)
+      setPagamento(false)
+      closeCart()
     }
   }
 
@@ -208,7 +223,8 @@ const Cart = () => {
                         <S.InputGroup>
                           <S.Input>
                             <label htmlFor="addressCode">CEP</label>
-                            <input
+                            <IMaskInput
+                              mask="00000-000"
                               name="addressCode"
                               type="text"
                               id="addressCode"
@@ -224,7 +240,8 @@ const Cart = () => {
                           </S.Input>
                           <S.Input>
                             <label htmlFor="addressNumber">Número</label>
-                            <input
+                            <IMaskInput
+                              mask="000000"
                               name="addressNumber"
                               type="text"
                               id="addressNumber"
@@ -296,7 +313,8 @@ const Cart = () => {
                         <S.InputGroup>
                           <S.Input>
                             <label htmlFor="cardNumber">Número do cartão</label>
-                            <input
+                            <IMaskInput
+                              mask="0000 0000 0000 0000"
                               name="cardNumber"
                               type="text"
                               id="cardNumber"
@@ -312,7 +330,8 @@ const Cart = () => {
                           </S.Input>
                           <S.Input>
                             <label htmlFor="cardCode">CVV</label>
-                            <input
+                            <IMaskInput
+                              mask="000"
                               name="cardCode"
                               type="text"
                               id="cardCode"
@@ -332,7 +351,8 @@ const Cart = () => {
                             <label htmlFor="expireMonth">
                               Mês de vencimento
                             </label>
-                            <input
+                            <IMaskInput
+                              mask="00"
                               name="expireMonth"
                               type="text"
                               id="expireMonth"
@@ -350,7 +370,8 @@ const Cart = () => {
                             <label htmlFor="expireYear">
                               Ano de vencimento
                             </label>
-                            <input
+                            <IMaskInput
+                              mask="00"
                               name="expireYear"
                               type="text"
                               id="expireYear"
@@ -365,7 +386,9 @@ const Cart = () => {
                             />
                           </S.Input>
                         </S.InputGroup>
-                        <button type="submit">Finalizar Pagamento</button>
+                        <button type="submit" className="finalizar">
+                          Finalizar Pagamento
+                        </button>
                         <Button
                           type="button"
                           width="all"
@@ -380,10 +403,39 @@ const Cart = () => {
               )}
             </>
           ) : (
-            <p className="empty-text">
-              O carrinho está vazio, adicione pelo menos um produto para
-              continuar com a compra
-            </p>
+            <>
+              {!isSuccess && !data ? (
+                <p className="empty-text">
+                  O carrinho está vazio, adicione pelo menos um produto para
+                  continuar com a compra
+                </p>
+              ) : (
+                <S.Mensage>
+                  <h3>Pedido realizado - {data?.orderId}</h3>
+                  <p>
+                    Estamos felizes em informar que seu pedido já está em
+                    processo de preparação e, em breve, será entregue no
+                    endereço fornecido
+                  </p>
+                  <p>
+                    Gostaríamos de ressaltar que nossos entregadores não estão
+                    autorizados a realizar cobranças extras.
+                  </p>
+                  <p>
+                    Lembre-se da importância de higienizar as mãos após o
+                    recebimento do pedido, garantindo assim sua segurança e
+                    bem-estar durante a refeição.
+                  </p>
+                  <p>
+                    Esperamos que desfrute de uma deliciosa e agradável
+                    experiência gastronômica. Bom apetite!
+                  </p>
+                  <Button type="button" width="all" onClick={concluir}>
+                    Concluir
+                  </Button>
+                </S.Mensage>
+              )}
+            </>
           )}
         </>
       </S.Cart>
