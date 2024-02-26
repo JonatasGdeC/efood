@@ -118,6 +118,16 @@ const Cart = () => {
     }
   }
 
+  if (form.values.addressCode.length === 9) {
+    fetch(`https://viacep.com.br/ws/${form.values.addressCode}/json`)
+      .then((res) => res.json())
+      .then((json) => {
+        form.values.address = `${json.logradouro} - ${json.bairro}`
+        form.values.city = json.localidade
+        form.values.addressComplement = json.complemento
+      })
+  }
+
   useEffect(() => {
     if (isSuccess) {
       dispatch(clear())
