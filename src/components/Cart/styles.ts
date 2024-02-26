@@ -91,10 +91,56 @@ export const Total = styled.div`
   color: ${cores.branco};
 `
 
-export const Buttons = styled.div`
-  margin-top: 24px;
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: ${cores.branco};
 
-  button {
-    margin-bottom: 8px;
+  h3 {
+    margin-bottom: 16px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: none;
+  }
+
+  button:first-of-type {
+    margin-top: 24px;
+  }
+`
+
+export const InputGroup = styled.div`
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  width: 100%;
+`
+
+export const Input = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: bold;
+
+  input {
+    background-color: ${cores.branco};
+    border: 1px solid transparent;
+    font-weight: bold;
+    padding: 8px;
+    width: 100%;
+
+    &.inputIsError {
+      border-color: #ff0000;
+      background-color: #ff8989;
+    }
+
+    &.cardNumber {
+      width: 230px;
+    }
+
+    &.cardCode {
+      width: 86px;
+    }
   }
 `
