@@ -34,6 +34,13 @@ export const Cart = styled.aside`
   height: 100%;
   background-color: ${cores.rosa};
   z-index: 1;
+
+  .empty-text {
+    text-align: center;
+    color: ${cores.branco};
+    font-size: 16px;
+    font-weight: bold;
+  }
 `
 
 export const Lista = styled.div`
