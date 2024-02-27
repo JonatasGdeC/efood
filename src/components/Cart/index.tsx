@@ -303,7 +303,10 @@ const Cart = () => {
                   ) : (
                     <>
                       <S.Form onSubmit={form.handleSubmit}>
-                        <h3>Pagamento - Valor a pagar </h3>
+                        <h3>
+                          Pagamento - Valor a pagar{' '}
+                          {formataPreco(getTotalPreco())}
+                        </h3>
                         <S.Input>
                           <label htmlFor="cardName">Nome no cartão</label>
                           <input
