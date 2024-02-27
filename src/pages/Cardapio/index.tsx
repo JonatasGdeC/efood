@@ -3,6 +3,7 @@ import Header from '../../components/Header'
 import ListaPratos from '../../components/ListaPratos'
 
 import { useGetPratosQuery } from '../../services/api'
+import Loading from '../../components/Loading'
 
 export type Cardapio = {
   id: number
@@ -18,7 +19,7 @@ const Cardapio = () => {
   const { data: cardapio } = useGetPratosQuery(id!)
 
   if (!cardapio) {
-    return <h4>Carregando...</h4>
+    return <Loading />
   }
 
   return (

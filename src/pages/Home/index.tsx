@@ -1,5 +1,6 @@
 import Header from '../../components/Header'
 import ListaRestaurante from '../../components/ListaRestaurantes'
+import Loading from '../../components/Loading'
 
 import { useGetRestaurantesQuery } from '../../services/api'
 import { Cardapio } from '../Cardapio'
@@ -29,7 +30,7 @@ const Home = () => {
     )
   }
 
-  return <h4>Carregando...</h4>
+  return <Loading />
 }
 
 export default Home
