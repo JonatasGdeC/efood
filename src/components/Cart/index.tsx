@@ -173,7 +173,7 @@ const Cart = () => {
                     <p>{formataPreco(getTotalPreco())}</p>
                   </S.Total>
                   <Button
-                    type="button"
+                    assignment="button"
                     width="all"
                     onClick={() => setEntrega(true)}
                   >
@@ -184,7 +184,7 @@ const Cart = () => {
                 <>
                   {!pagamento ? (
                     <>
-                      <S.Form>
+                      <S.Form onSubmit={form.handleSubmit}>
                         <h3>Entrega</h3>
                         <S.Input>
                           <label htmlFor="receiptName">Quem irá receber</label>
@@ -285,14 +285,14 @@ const Cart = () => {
                           />
                         </S.Input>
                         <Button
-                          type="button"
+                          assignment="button"
                           width="all"
                           onClick={() => checkInputEntrega()}
                         >
                           Continuar com pagamento
                         </Button>
                         <Button
-                          type="button"
+                          assignment="button"
                           width="all"
                           onClick={() => setEntrega(false)}
                         >
@@ -396,11 +396,11 @@ const Cart = () => {
                             />
                           </S.Input>
                         </S.InputGroup>
-                        <button type="submit" className="finalizar">
-                          Finalizar Pagamento
-                        </button>
+                        <Button assignment="button" type={() => SubmitEvent}>
+                          Finalizar pagamento
+                        </Button>
                         <Button
-                          type="button"
+                          assignment="button"
                           width="all"
                           onClick={() => setPagamento(false)}
                         >
@@ -440,7 +440,7 @@ const Cart = () => {
                     Esperamos que desfrute de uma deliciosa e agradável
                     experiência gastronômica. Bom apetite!
                   </p>
-                  <Button type="button" width="all" onClick={concluir}>
+                  <Button assignment="button" width="all" onClick={concluir}>
                     Concluir
                   </Button>
                 </S.Mensage>

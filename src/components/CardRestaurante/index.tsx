@@ -46,7 +46,7 @@ const CardRestaurante = ({
           </div>
         </S.Title>
         <S.Description>{getDescricao(description)}</S.Description>
-        <Button to={`/cardapio/${id}`} type="link">
+        <Button to={`/cardapio/${id}`} assignment="link">
           Saiba mais
         </Button>
       </S.Informacoes>

@@ -1,24 +1,21 @@
 import * as S from './styles'
 
 export type Props = {
-  type: 'button' | 'link'
+  assignment: 'button' | 'link'
+  type?: () => void
   width?: 'all'
   to?: string
   children: string | JSX.Element
   onClick?: () => void
 }
 
-const Button = ({ type, width, to, children, onClick }: Props) => {
-  if (type === 'link') {
-    return (
-      <S.ButtonLink to={to as string} type="link">
-        {children}
-      </S.ButtonLink>
-    )
+const Button = ({ assignment, type, width, to, children, onClick }: Props) => {
+  if (assignment === 'link') {
+    return <S.ButtonLink to={to as string}>{children}</S.ButtonLink>
   }
 
   return (
-    <S.Button width={width} type="button" onClick={onClick}>
+    <S.Button width={width} assignment="button" onClick={onClick} type={type}>
       {children}
     </S.Button>
   )

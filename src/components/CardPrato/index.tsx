@@ -63,7 +63,7 @@ const CardPrato = ({
         <img src={imgPrato} alt={title} />
         <S.Title>{title}</S.Title>
         <S.Description>{getDescricao(description)}</S.Description>
-        <Button width="all" type="button">
+        <Button width="all" assignment="button">
           <p
             onClick={() => {
               setModal({ isVisible: true })
@@ -84,10 +84,8 @@ const CardPrato = ({
               <h4>{title}</h4>
               <p>{description}</p>
               <p>Serve: {portion}</p>
-              <Button type="button">
-                <span
-                  onClick={addPrato}
-                >{`Adicionar ao carrinho - ${formataPreco(price)}`}</span>
+              <Button assignment="button" onClick={addPrato}>
+                <>Adicionar ao carrinho - {formataPreco(price)}</>
               </Button>
             </S.InfosModal>
           </S.BodyModal>
